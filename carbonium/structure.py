@@ -2,6 +2,9 @@
 # -*- coding: utf-8 -*-
 
 import logging
+import os
+import pickle
+
 from .name import Name
 
 logger = logging.getLogger(__name__)
@@ -31,8 +34,10 @@ class Structure:
         self.domains = set()
         for name_definition in name_list:
 
-            if name_definition['name'] in self.names:
-                raise ValueError('Name {} already present'.format(name_definition['name']))
+            if name_definition["name"] in self.names:
+                raise ValueError(
+                    "Name {} already present".format(name_definition["name"])
+                )
 
             self._add_name(name_definition)
 
@@ -81,3 +86,29 @@ class Structure:
 
     def get(self, name, default=None):
         return self.__dict__.get(name, default)
+
+    def dump(self, filename: str, overwrite=False):
+        if not filename.endswith(".pkl"):
+            filename += ".pkl"
+
+        logger.info("Saving on {}".format(filename))
+
+        if os.path.exists(filename):
+            if not overwrite:
+                msg = "{} ALREADY EXISTS! I'M NOT ABLE TO OVERWRITE!".format(filename)
+                logger.info(msg)
+                raise FileExistsError(msg)
+
+            logger.info("Overwriting {}...".format(filename))
+
+        with open(filename, "wb") as output:
+            pickle.dump(self.__dict__, output)
+
+    def load(self, filename):
+        logger.debug("Loading from {}".format(filename))
+        if not os.path.exists(filename):
+            logger.error("{} DOES NOT EXISTS!".format(filename))
+            raise FileNotFoundError("{} DOES NOT EXISTS!".format(filename))
+
+        with open(filename, "rb") as input_file:
+            self.__dict__ = pickle.load(input_file)
