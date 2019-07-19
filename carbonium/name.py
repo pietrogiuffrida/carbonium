@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-class Name:
 
+class Name:
     def __init__(self, domains, name, alias, **kwargs):
         """Name class
 
@@ -20,11 +20,7 @@ class Name:
         self.domains = domains
         self.name = name
         self.alias = alias
-        self.properties = [
-            "domains",
-            "name",
-            "alias",
-        ]
+        self.properties = ["domains", "name", "alias"]
 
         for key in kwargs:
             self.properties.append(key)
@@ -37,9 +33,9 @@ class Name:
     @domains.setter
     def domains(self, value):
         if not value:
-            raise ValueError('domains argument cannot be None')
+            raise ValueError("domains argument cannot be None")
         if not isinstance(value, list):
-            raise ValueError('domains argument must be an instance of list')
+            raise ValueError("domains argument must be an instance of list")
         self._domains = value
 
     @property
@@ -49,7 +45,7 @@ class Name:
     @name.setter
     def name(self, value):
         if not value:
-            raise ValueError('name argument cannot be None')
+            raise ValueError("name argument cannot be None")
         self._name = value
 
     @property
@@ -69,4 +65,4 @@ class Name:
         msg = []
         for attr in self.properties:
             msg.append("{} {}".format(attr, getattr(self, attr)))
-        return '\n'.join(msg)
+        return "\n".join(msg)
