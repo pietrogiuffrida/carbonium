@@ -1,7 +1,7 @@
 # carbonium
 
 Easily manage a list of names with several
-property and (overlapping) order criteria.
+properties and (overlapping) order criteria.
 
 ## Installation
 
@@ -115,12 +115,14 @@ df = pd.DataFrame([
 ])
 
 for name in structure.get_names('raw'):
+    alias = structure.get(name).alias
     filling = structure.get(name).get("filling_value")
     if filling:
-        df[name].fillna(filling, inplace=True)
+        df[alias].fillna(filling, inplace=True)
 
 for name in structure.get_names('new'):
-    df[name] = "arbitrary"    
+    alias = structure.get(name).alias
+    df[alias] = "arbitrary"    
 
 output_columns = structure.get_names('new')
 df[output_columns].to_parquet('output.parquet')
