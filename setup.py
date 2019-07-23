@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="carbonium",
-    version="0.10.2",
+    version="0.10.3",
     url="https://github.com/pietrogiuffrida/carbonium/",
     author="Pietro Giuffrida",
     author_email="pietro.giuffri@gmail.com",
@@ -18,7 +18,7 @@ setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    description="manage a list of names with several "
+    description="Manage a list of names with several "
     "properties and (overlapping) order criteria",
     long_description=long_description,
     long_description_content_type="text/markdown",
