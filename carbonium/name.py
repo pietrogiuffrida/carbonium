@@ -3,7 +3,7 @@
 
 
 class Name:
-    def __init__(self, domains, name, alias, **kwargs):
+    def __init__(self, domains, name, alias=None, **kwargs):
         """Name class
 
         Name is the building block of a carbonium structure.
