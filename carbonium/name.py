@@ -66,3 +66,6 @@ class Name:
         for attr in self.properties:
             msg.append("{} {}".format(attr, getattr(self, attr)))
         return "\n".join(msg)
+
+    def __call__(self):
+        return getattr(self, "alias")
