@@ -35,7 +35,7 @@ class Name:
         if not value:
             raise ValueError("domains argument cannot be None")
         if not isinstance(value, list):
-            raise ValueError("domains argument must be an instance of list")
+            value = [value]
         self._domains = value
 
     @property
