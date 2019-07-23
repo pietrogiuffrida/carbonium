@@ -56,7 +56,8 @@ class Name:
     def alias(self, value):
         if not value:
             self._alias = self.name
-        self._alias = value
+        else:
+            self._alias = value
 
     def get(self, name, default=None):
         return self.__dict__.get(name, default)
