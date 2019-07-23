@@ -23,7 +23,7 @@ class Structure:
         domains (set): a set of available domains
     """
 
-    def __init__(self, name_list):
+    def __init__(self, name_list, *args, **kwargs):
         """Constructor method for Columns
 
         Args:
