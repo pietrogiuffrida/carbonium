@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="carbonium",
-    version="0.10.1",
+    version="0.10.2",
     url="https://github.com/pietrogiuffrida/carbonium/",
     author="Pietro Giuffrida",
     author_email="pietro.giuffri@gmail.com",
