@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+import re
 
 
 class Name:
@@ -46,7 +47,19 @@ class Name:
     def name(self, value):
         if not value:
             raise ValueError("name argument cannot be None")
+        self.check_identifier(value)
         self._name = value
+
+    @staticmethod
+    def check_identifier(identifier):
+        invalid = re.search(r"[^a-z0-9_]", identifier, flags=re.IGNORECASE)
+
+        if invalid:
+            raise ValueError(
+                "Name {} is not a valid identifier ({} is not a valid char)".format(
+                    identifier, invalid.group()
+                )
+            )
 
     @property
     def alias(self):
