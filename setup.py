@@ -3,9 +3,11 @@ from setuptools import setup
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
+from carbonium.version import __version__
+
 setup(
     name="carbonium",
-    version="0.10.3",
+    version=__version__,
     url="https://github.com/pietrogiuffrida/carbonium/",
     author="Pietro Giuffrida",
     author_email="pietro.giuffri@gmail.com",
